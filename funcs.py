@@ -5,10 +5,12 @@ from scipy import signal
 from scipy.fftpack import fft2, ifft2
 from matplotlib.colors import LogNorm
 
+
 def read_wav(path):
     rate, audio_array = wav.read(path)
     audio_array = np.mean(audio_array, axis=1)
     return audio_array, rate
+
 
 def short_time_fourier_transform(audio, nperseg,
                                  sample_rate=44100, window='hann'):
@@ -19,9 +21,11 @@ def short_time_fourier_transform(audio, nperseg,
     return frequency, time, transformed_audio
 
 
+
 def fourier_transform_2d(short_time_fourier):
     transformed_2d = fft2(abs(short_time_fourier))
     return transformed_2d
+
 
 def initial_separation(transformed_2d, window_size_r, k, window_size_s=1):
     background_component = np.empty_like(transformed_2d)
@@ -64,6 +68,7 @@ def another_separation_function(transformed_audio, background_mag,
 
     return background_dat, foreground_dat
 
+
 def inverse_short_time(background_dat, foreground_dat):
   N1, background_audio = signal.istft(background_dat)
   N2, foreground_audio = signal.istft(foreground_dat)
@@ -71,6 +76,7 @@ def inverse_short_time(background_dat, foreground_dat):
   time_2 = N2/44100
 
   return time_1, background_audio, time_2, foreground_audio
+
 
 def plot_short_time_fourier_transform(frequency, time, transformed_audio):
   fig, ax = plt.subplots()
@@ -81,6 +87,7 @@ def plot_short_time_fourier_transform(frequency, time, transformed_audio):
   ax.set_xlabel('Time [sec]', fontsize=16);
   plt.title('Audio Spectrogram of "PatrickTalbot.wav"', fontsize=18)
   plt.show()
+
 
 def plot_2d_fourier_transform(transformed_2d_fourier):
     fig, ax = plt.subplots()
@@ -94,6 +101,7 @@ def plot_2d_fourier_transform(transformed_2d_fourier):
     plt.xlabel("Rate [cyc/s]", fontsize=12)
     plt.ylabel("Scale [cyc/Hz]", fontsize=12)
     plt.show()
+
 
 def plot_compare(transformed_2d, foreground_component, background_component,
                  f, t, transformed_audio, foreground_dat, background_dat, norm=LogNorm(vmin=5)):
@@ -144,6 +152,7 @@ def plot_compare(transformed_2d, foreground_component, background_component,
     fig.tight_layout(pad=3.0)
     plt.show()
 
+
 def plot_audio(x1, x2, t1, t2):
     fig, ax = plt.subplots(1, 2)
     ax[0].plot(t1, x1)
@@ -154,9 +163,11 @@ def plot_audio(x1, x2, t1, t2):
     ax[1].set_ylabel('Amplitude')
     plt.show()
 
+
 def write_wav(x, filename, sample_rate=44100):
     scaled = np.int16(x / np.max(np.abs(x)) * 32767)
     wav.write(filename, sample_rate, scaled)
+
 
 def strip_voice(bg, fg, f):
     f_filt_bg = (f>5000)
