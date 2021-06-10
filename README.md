@@ -14,4 +14,4 @@ k - Peak sensitivity; Number of standard deviations within window to determine p
 
 ### Issues
 - Currently modifying separation functions to utilise numpy arrays and replacing for loops
-- Issue with tiling the array using numpy as transformed 2d is often prime, since every song has a different length in time a different padding is needed with different songs
+- Issue with tiling the array using numpy as transformed 2d x axis can be prime, since every song has a different length in time a different padding is needed with different songs
