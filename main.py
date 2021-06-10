@@ -2,14 +2,11 @@ from funcs import *
 import time as t
 def main(path, nperseg, w, k):
     '''
-
-    :param nperseg: Number of Frequency bins in the STFT
-    :param w: Window size in image convolution of 2DFT spectrogram
-    :param k: Number of Standard Deviations within window to identify Peak
-    :return: Saves Separated files, and returns data to plot audio files
+    param nperseg: Number of Frequency bins in the STFT
+    param w: Window size in image convolution of 2DFT spectrogram
+    param k: Number of Standard Deviations within window to identify Peak
+    return: Saves Separated files, and returns data to plot audio files
     '''
-
-
     t0 = t.time()
     audio, sample_rate = read_wav(path)
     frequency, time, transformed_audio = short_time_fourier_transform(audio, nperseg,
@@ -52,6 +49,4 @@ for n in npersegs:
     for win in wins:
         for k in ks:
             time_1, background_audio, time_2, foreground_audio = main('Seventeen.wav', n, win, k)
-
-
 '''
