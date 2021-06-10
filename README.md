@@ -11,3 +11,5 @@ nperseg - Number of frequency bins in STFT to produce spectrogram
 w - window size for detecting peaks in 2DFT spectrogram
 
 k - Peak sensitivity; Number of standard deviations within window to determine peak
+
+- Currently modifying separation functions to utilise numpy arrays and replacing for loops
