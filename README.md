@@ -12,4 +12,6 @@ w - window size for detecting peaks in 2DFT spectrogram
 
 k - Peak sensitivity; Number of standard deviations within window to determine peak
 
+### Issues
 - Currently modifying separation functions to utilise numpy arrays and replacing for loops
+- Issue with tiling the array using numpy as transformed 2d is often prime, since every song has a different length in time a different padding is needed with different songs
