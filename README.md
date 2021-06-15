@@ -6,8 +6,10 @@ Based on MUSIC/VOICE SEPARATION USING THE 2D FOURIER TRANSFORM - by - Prem Seeth
 Program takes .wav file as input. Outputs bg.wav and fg.wav.
 
 ### Tuneable Parameters 
+
 Freq_res - Frequency resolution of STFT, coupled to time resolution:
            Number of frequency bins in STFT to produce spectrogram
            nperseg = 2^(8+freq_res)
+
 k - Peak sensitivity; Number of standard deviations within window to determine peak
 
